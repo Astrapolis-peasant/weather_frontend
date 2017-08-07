@@ -30,11 +30,11 @@ class WeatherList extends Component{
     const weather_des = cityData.weather_info.currently.icon;
     const icon = "wi wi-forecast-io-" + weather_des;
     const forecast_unix = cityData.weather_info.daily.data;
-    const forecast = day_weather_mapper(forecast_unix, time_zone).map(weather => <div key={weather[0]+'key0'+Date.now()}>
+    const forecast = day_weather_mapper(forecast_unix, time_zone).map((weather,index) => <div key={weather[0]+'key0'+index}>
       {weather[0]}: <p className={weather[1]}></p>
     </div>)
     const history = cityData.history.map(weather => weather.apparentTemperature);
-    const history_weather = day_weather_mapper2(cityData.history,time_zone).map(weather => <div key={weather[0]+'key1'+Date.now()}>
+    const history_weather = day_weather_mapper2(cityData.history,time_zone).map((weather,index) => <div key={weather[0]+'key1'+index}>
       {weather[0]}: <p className={weather[1]}></p>
     </div>)
 

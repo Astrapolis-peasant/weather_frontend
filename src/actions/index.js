@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = "https://bluewolfbackend.herokuapp.com/weather/";
+const ROOT_URL = "http://localhost:5001/weather/";
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
