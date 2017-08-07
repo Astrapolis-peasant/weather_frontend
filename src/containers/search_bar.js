@@ -3,15 +3,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 
-class SearchBar extends Component {
+const getting_cache = () => {
+  const cached = localStorage.getItem("user_session");
+  if (cached) {
+    return (JSON.parse(cached));
+  }else {
+    return ['Queries:']
+  };
+}
 
+class SearchBar extends Component {
 constructor(props) {
   super(props);
 
   this.state = { term: 'new york',
-                history:['Queries:']};
+                history: getting_cache()};
   this.onInputChange = this.onInputChange.bind(this);
-}
+};
+
 onInputChange = (event) => {
   this.setState({term:event.target.value})
 }
@@ -20,6 +29,8 @@ onFormSubmit = (event) => {
   event.preventDefault();
   this.props.fetchWeather(this.state.term);
   this.setState({history:this.state.history.concat(this.state.term)});
+  localStorage.setItem("user_session", JSON.stringify(this.state.history.concat(this.state.term)));
+  console.log(localStorage)
 }
 
 onButtonClick = (event) => {
