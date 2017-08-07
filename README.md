@@ -26,10 +26,11 @@ run production
 	-`npm install -g serve`
 
 	-`serve -s build`
-  
+
 	- copy&paste `http://localhost:5000/` to browser
 
 structure
+
 -`actions`
 	>`index.js`
 	>>`function fetchWeather`: fetch weather through backend
