@@ -26,10 +26,11 @@ onInputChange = (event) => {
 }
 
 onFormSubmit = (event) => {
+  const new_history = this.state.history.concat(this.state.term);
   event.preventDefault();
   this.props.fetchWeather(this.state.term);
-  this.setState({history:this.state.history.concat(this.state.term)});
-  localStorage.setItem("user_session", JSON.stringify(this.state.history.concat(this.state.term)));
+  this.setState({history: new_history});
+  localStorage.setItem("user_session", JSON.stringify(new_history));
   console.log(localStorage)
 }
 
